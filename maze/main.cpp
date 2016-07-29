@@ -18,6 +18,8 @@ void createMaze() {
     maze[5][11] = maze[6][11] = maze[7][11] = maze[8][11] = maze[9][11] = maze[9][10] = maze[9][9] = maze[9][8] = maze[9][7] = maze[9][6] = 
     maze[9][5] = maze[10][5] = maze[11][5] = maze[12][5] = maze[13][5] = maze[13][6] = maze[14][6] = maze[14][7] = maze[14][8] = maze[14][9] =
     maze[14][10] = maze[13][10] = maze[12][10] = maze[12][11] = maze[12][12] = maze[13][12] = maze[13][13] = maze[13][14] = maze[14][14] = 1;
+    maze[0][2] = maze[3][5] = maze[4][5] = maze[3][2] = maze[6][1] = maze[7][1] = maze[8][1] = maze[9][1] = maze[10][1] = 1;
+    
 }
 
 void print() {
@@ -45,8 +47,9 @@ void start() {
            cout << "迷宫没有通路..." << endl;
            exit(0);
        }
-       if ((head->x == SIZE - 1) && (head->y == SIZE -1)) {     //找到通路,打印路线
-        //    print(); 
+       if ((head->x == SIZE - 1) && (head->y == SIZE - 1)) {     //找到通路,打印路线
+           cout << "存在通路" << endl;
+           exit(0); 
        }
     }    
 }
@@ -59,23 +62,28 @@ Struct *move(int x, int y) {
     if ((y + 1) < SIZE && maze[x][y+1] == 1) {            //选择下一步方向,优先选择右下
         a = x;
         b = y + 1;
+    //    cout << "右" << endl;
     }
     else if ((x + 1) < SIZE && maze[x+1][y] == 1) {
         a = x + 1;
         b = y;
+  //      cout << "下" << endl;
     }
-    else if ((y -1) > -1 && maze[x][y-1]) {
+    else if ((y -1) > -1 && maze[x][y-1] == 1) {
         a = x;
         b = y - 1;
+   //     cout << "左" << endl;
     }
-    else if ((x - 1) > -1 && maze[x-1][y]) {
+    else if ((x - 1) > -1 && maze[x-1][y] == 1) {
         a = x - 1;
         b = y;
+  //      cout << "上" << endl;
     }
     if (a == 15 && b == 15) {                         //无路可走,需要回退
         maze[x][y] = -1;
         head = head->remove(head);
     } else {
+        cout << a << " , " << b << endl;
         maze[x][y] = 2;
         head = head->add(a, b, head);                 //有路可走,坐标入栈
     }
@@ -84,6 +92,6 @@ Struct *move(int x, int y) {
 
 int main() {
     createMaze();
-
- //   print();
+    start();    
+//    print();
 }

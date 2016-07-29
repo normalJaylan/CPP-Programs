@@ -18,8 +18,10 @@ Struct::Struct() {
     x = y = 0;
 }
 
-Struct *Struct::add(int x, int y, Struct *head) {
+Struct *Struct::add(int a, int b, Struct *head) {
     Struct *node = new Struct();
+    node->x = a;
+    node->y = b;
     node->next = head;
     head = node;
     return head;
