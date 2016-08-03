@@ -7,11 +7,11 @@ template<class T>
 class Stack {
     public :
         int top;
-        T data[MAX];
+        T* data[MAX];
     public :
         Stack();
-        void add(T address);
-        T remove();
+        void add(T *address);
+        T *remove();
         bool isEmpty();
 };
 
@@ -21,12 +21,12 @@ Stack<T>::Stack() {
 }
 
 template<class T>
-void Stack<T>::add(T address) {
+void Stack<T>::add(T *address) {
     data[top++] = address;
 }
 
 template<class T>
-T Stack<T>::remove() {
+T *Stack<T>::remove() {
     return (data[--top]);
 }
 
