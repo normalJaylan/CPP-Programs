@@ -41,17 +41,47 @@ void createTree() {
 }
 
 void PreOrder(TreeNode<char> *root) {
+    Stack<TreeNode<char> > *stack = new Stack<TreeNode<char> >();   
     TreeNode<char> *temp = root;
+    while (temp != NULL || !stack->isEmpty()) {
+        if (temp != NULL) {
+            cout << temp->data << endl;
+            stack->add(temp);
+            temp = temp->left;
+        } else {
+            temp = stack->remove();
+            temp = temp->right;
+        }
+    }
+}
+
+void InOrder(TreeNode<char> *root) {
+    Stack<TreeNode<char> > *stack = new Stack<TreeNode<char> >();
+    TreeNode<char> *temp = root;
+    while (temp != NULL || !stack->isEmpty()) {
+        if (temp != NULL) {
+            stack->add(temp);
+            temp = temp->left;
+        } else {
+            temp = stack->remove();
+            cout << temp->data << endl;
+            temp = temp->right;
+        }
+    }
+}
+
+void PostOrder(TreeNode<char> *root) {
     if (root) {
+        PostOrder(root->left);
+        PostOrder(root->right);
         cout << root->data << endl;
-        PreOrder(root->left);
-        PreOrder(root->right);
     }
 }
 
 int main() {
     createTree();
-    PreOrder(root);
-//    cout << root->left->left->right->data << endl;
+//    PreOrder(root);
+//    InOrder(root);
+    PostOrder(root);
     return 0;
 }
