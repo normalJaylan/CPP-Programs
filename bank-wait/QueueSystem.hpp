@@ -40,4 +40,8 @@ class QueueSystem {
         double avg_stay_time;
 };
 
+QueueSystem::QueueSystem(int total_service_time, int window_num) {
+    total_service_time(total_service_time);
+}
+
 #endif 

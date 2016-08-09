@@ -3,12 +3,12 @@
 
 #define RANDOM_PARAMETER 100
 
-#include "Randow.hpp"
+#include "Random.hpp"
 
 struct Node {
     int arrive_time;
     int duration;
-    Struct Node *next;
+    Struct Node* next;          
 
     Node(int arrive_time = 0, int duration = Random::uniform(RANDOM_PARAMETER)):
         arrive_time(arrive_time),

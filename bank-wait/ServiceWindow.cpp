@@ -12,7 +12,7 @@ class ServiceWindow {
     public :
         inline ServiceWindow() {
             window_status = IDLE;
-        };
+        }
         inline bool isIdle() const {
             if (window_status == IDLE) {
                 return true;

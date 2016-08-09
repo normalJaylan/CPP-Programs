@@ -13,9 +13,9 @@ struct Event {
     Event* next;
 
     //默认为到达事件, 发生随机事件
-    Event(int occur_time = Random::uniform(RANDOM_PARAMETER_), int event_type = -1):
-        occur_time(occur_time);
-        event_type(event_type);
+    Event(int occur_time = Random::uniform(RANDOM_PARAMETER), int event_type = -1):
+        occur_time(occur_time),
+        event_type(event_type),
         next(nullptr) {}
 };
 
