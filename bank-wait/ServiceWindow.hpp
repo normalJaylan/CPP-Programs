@@ -1,7 +1,7 @@
 #ifndef ServiceWindow_hpp
 #define ServiceWindow_hpp
 
-#include "Node.h"
+#include "Node.hpp"
 
 enum WindowStatus {
     SERVICE,
@@ -11,7 +11,7 @@ enum WindowStatus {
 class ServiceWindow {
     public :
         inline ServiceWindow() {
-            window_status = IDLE;
+            window_status = SERVICE;
         }
         inline bool isIdle() const {
             if (window_status == IDLE) {
@@ -20,8 +20,8 @@ class ServiceWindow {
                 return false;
             }
         }
-        inline void serveCustomer(Customer &customer) {
-            this->customer = customer;
+        inline void serveCustomer(Node &customer) {
+            this->customer = &customer;
         }
         inline void setBusy() {
             window_status = SERVICE;
@@ -30,13 +30,13 @@ class ServiceWindow {
             window_status = IDLE;
         }
         inline int getCustomerArriveTime() const {
-            return customer.arrive_time;
+            return customer->arrive_time;
         }
         inline int getCustomerDuration() const {
-            return customer.duration;
+            return customer->duration;
         }
     private :
-        Customer customer;
+        Node* customer = new Node();
         WindowStatus window_status;
 };
 
