@@ -43,7 +43,8 @@ string get_d(string a, string b, string &x, string &y)			// get d
 	string t = x;
 	x = y;
 	y = pri.sub(t, pri.mul(pri.div(a, b, 1), y));			
-	return r;
+       
+        return r;
 }
 
 void print(string e, string d, string n)
@@ -65,7 +66,7 @@ string compute(string a, string b, string n)
         if (pri.div(b, "2", 0) == "1") 		
             x = pri.div(pri.mul(x, y), n, 0); 							
         y = pri.div(pri.mul(y, y), n, 0);								
-		b = pri.div(b, "2", 1);												
+	b = pri.div(b, "2", 1);												
     }  
     return pri.div(x, n, 0);  							
 }
@@ -105,6 +106,11 @@ int main()
 		}
 		cout << q << endl;
 	}
+
+//        p = "26240867817681868266756659123839583762465154552803";
+//        q = "14336816377536066837580608295621274857786649247029"; 
+
+        cout << "" << endl;
 	cout << "p = " << p << endl;
 	cout << "q = " << q << endl;
 
@@ -114,7 +120,7 @@ int main()
 	cout << "n = " << n << endl;
 	cout << "euler = " << euler << endl;
 
-	string e = "12345678901234567890";
+	string e = "1234567890123456789012";
 	while (true)
 	{
 		if (get_e(euler, e) == "1")
@@ -125,8 +131,15 @@ int main()
 	
 	string d = "0";
 	string y = "0";
-	get_d(e, euler, d, y);				 
-	cout << "d = " << d << endl;
+	get_d(e, euler, d, y);
+
+        while (true)
+        {
+            if (d[0] != '-')
+                break;
+            d = rand.add(d, euler);
+        }
+        cout << "d = " << d << endl;
 
 //	print(e, d, n);                             
 

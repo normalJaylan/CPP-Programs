@@ -17,11 +17,8 @@ public :
 
 bool MillerRabin::MillerRabin_Test(string p)
 {
-	string t = p;
-	int x = t[49] - 48;
-	x -= 1;
-	t[49] = x + 48;				// 计算得到 p - 1		
-	
+	string t = pri.sub(p, "1");
+
 	cout << "MillerRabin..." << endl;
 	
 	string str = t;
